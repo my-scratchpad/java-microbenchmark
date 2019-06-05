@@ -21,8 +21,32 @@ $ java -jar build/libs/benchmarks.jar "HelloWorld"
 
 # 특정 클래스 벤치마크 실행
 $  java -jar build/libs/benchmarks.jar "io.iamkyu.HelloWorld"
-
 ```
+
+## 자주 쓸 만한 VM options
+현재 자바의 기본 설정 확인
+```shell
+$ java -XX:+PrintFlagsFinal -version
+$ java -XX:+PrintFlagsFinal -version | grep -iE 'HeapSize|PermSize|ThreadStackSize'
+```
+
+```shell
+# 초기 Heap 사이즈
+-Xms
+
+# 최대 Heap 사이즈
+-Xmx
+
+# GC 알고리즘 지정
+-XX:+UseG1GC
+
+# 메서드를 컴파일 할 때 마다 로깅
+-XX:PrintCompilation
+
+# GC 로그 엔트리
+-verbose:gc
+```
+
 
 
 # JMH Command line options
